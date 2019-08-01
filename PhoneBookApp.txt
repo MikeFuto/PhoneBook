@@ -1,0 +1,178 @@
+package com.claim;
+
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+
+/**	
+//Modifier: public static
+//Return type: void
+// Method name: class PhoneBookApp
+//Parameters: 
+//Purpose: manage a telephone book
+*/	
+
+public class PhoneBookApp {
+
+	public static void main(String[] args) {
+		
+			// initialize some objects and variables
+			//TestData testdataObject = new TestData();
+		Person person = new Person();
+		PhoneBook phonebookObject = new PhoneBook();
+		
+		String temp = "";
+		String tempName = "";
+		String tempName1 = "";
+		String tempName2 = "";
+		String tempTele = "";
+		
+		String tempStreetAddr = "";
+		String tempCityAddr = "";
+		String tempStateAddr = "";
+		String tempZipAddr = "";
+		int x = 9;
+		
+		Scanner in = new Scanner (System.in);
+		
+			//Ask and Call appropriate method
+		String sessionContinue = "Y";
+		while (sessionContinue == "Y") {
+			
+			//Ask attendant to choose what to do
+			System.out.println(" ");
+			System.out.println("What would you like to do ?");
+			System.out.println(" ");
+			System.out.println("Would you like to: 	ADD A PERSON?		Type in 1");
+			System.out.println("Would you like to: 	SEARCH BY PHONE#?	Type in 2");
+			System.out.println(" ");
+			System.out.println("Would you like to: 	SEARCH Full  NAME?	Type in 3");
+			System.out.println("Would you like to: 	SEARCH First NAME?	Type in 4");
+			System.out.println("Would you like to: 	SEARCH Last  NAME?	Type in 5");
+			System.out.println(" ");
+			System.out.println("Would you like to: 	UPDATE AN ADDRESS?	Type in 6");
+			System.out.println("Would you like to: 	PRINT ALL PERSONS?	Type in 7");
+			System.out.println(" ");
+			System.out.println("Would you like to: 	DELETE A PERSON?	Type in 8");
+			System.out.println("Would you like to:  END SESSION?		Type in 9");
+			System.out.println(" ");
+			
+			try {
+				x = in.nextInt();
+			}
+			catch(InputMismatchException ex ) {
+				System.out.println("ERROR in entry................ ");	
+				x=9;
+			}	
+			
+			switch(x)
+			{
+				case 1:		//Add a person							
+									
+					System.out.println("Paste the next line of customer data onto console ");
+					in = new Scanner (System.in);
+					temp = in.nextLine();
+					System.out.println("Your input string is: " + temp);
+					phonebookObject.getAddAPerson(temp);
+					
+					break;
+					
+				case 2:		//Search a person by phone number		
+
+					System.out.print("Type in the telephone number of the person to search: ");
+					tempTele = in.next();
+					System.out.print("You typed in: " + tempTele);
+					
+					phonebookObject.getSearchACustomerTele(tempTele);
+				
+					break;
+					
+				case 3:		//Search a person by full name only	
+					
+					System.out.print("Type in the persons FIRST NAME to search: ");
+					tempName1 = in.next();
+					System.out.print("Type in the persons LAST NAME to search: ");
+					tempName2 = in.next();							
+					
+					phonebookObject.getSearchFullName(tempName1, tempName2);
+					
+					break;	
+									
+				case 4:		//Search a person by first name	only	
+					
+					System.out.print("Type in the persons FIRST NAME to search: ");
+					tempName = in.next();										
+					
+					phonebookObject.getSearchFirstName(tempName);
+					
+					break;					
+					
+				case 5:		//Search a person by last name only		
+					
+					System.out.print("Type in the persons LAST NAME to search: ");
+					tempName = in.next();										
+					
+					phonebookObject.getSearchLastName(tempName);
+					
+					break;											
+					
+				case 6:		//Update a person Address	add city state zip using telephone number
+					
+					System.out.println("Type in the existing TELEPHONE# of the person to update: ");
+					tempTele = in.next();
+					
+					System.out.print("Type in the persons new street Address: ");
+					tempStreetAddr = in.next();
+					System.out.print("Type in the persons new City: ");
+					tempCityAddr = in.next();			
+					System.out.print("Type in the persons new State: ");
+					tempStateAddr = in.next();			
+					System.out.print("Type in the persons new zip code: ");
+					tempZipAddr = in.next();	
+					System.out.println(" ");
+									
+					System.out.println("You typed in: " + tempTele + " " + tempStreetAddr + " " + tempCityAddr + " "  + tempStateAddr + " " + tempZipAddr);
+					
+					phonebookObject.getUpdateACustomerAddress(tempTele, tempStreetAddr, tempCityAddr, tempStateAddr, tempZipAddr);
+					
+					break;	
+					
+				case 7:		//Sort and Print out all persons
+					
+					phonebookObject.getPrintAllCustomers();
+					
+					break;
+					
+				case 8: 	//Delete a customer
+												
+					System.out.print("Type in the telephone number of the person to delete: ");
+					tempTele = in.next();
+					
+					phonebookObject.getRemoveAPerson(tempTele);				
+
+					break;
+					
+				case 9:		//End session	
+					
+					System.out.println("Ending session ");
+					sessionContinue = "N";
+					
+					break;
+	
+				default:
+					
+					System.out.println(" ");
+					System.out.println("Enter another menue selection ");
+					x = 9;
+					
+					break;
+					
+			}
+			System.out.println(" ");
+		}	
+			
+		System.out.println("Finished");		
+	}
+	
+//  Main ends here				

@@ -1,0 +1,54 @@
+package com.claim;
+
+public class Address {
+	
+	
+	private String  streetAddress;
+	private String  cityAddress;
+	private String  stateAddress;
+	private String  zipAddress;
+		
+public Address() {}	
+	
+	public Address(String streetAddress, String cityAddress, String stateAddress, String zipAddress) {
+		
+		this.streetAddress = streetAddress;
+		this.cityAddress = cityAddress;
+		this.stateAddress = stateAddress;
+		this.zipAddress = zipAddress;
+	}
+	
+//..................................................
+	
+	@Override
+	public String toString() {
+		return "Address [streetAddress=" + streetAddress + ", cityAddress=" + cityAddress + ", stateAddress="
+				+ stateAddress + ", zipAddress=" + zipAddress + "]";
+	}
+
+	public String getStreetAddress() {
+		return this.streetAddress;
+	}
+	public void setStreetAddress(String streetAddress) {
+			this.streetAddress = streetAddress;
+	}
+	public String getCityAddress() {
+		return this.cityAddress;
+	}
+	public void setCityAddress(String cityAddress) {
+			this.cityAddress = cityAddress;
+	}
+	public String getStateAddress() {
+		return this.stateAddress;
+	}
+	public void setStateAddress(String stateAddress) {
+			this.stateAddress = stateAddress;
+	}
+		
+	public String getZipAddress() {
+		return this.zipAddress;
+	}
+	public void setZipAddress(String zipAddress) {
+			this.zipAddress = zipAddress;
+	}
+}
